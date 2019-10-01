@@ -49,3 +49,8 @@ function bracesValid(str){
         return true;
     }
 }
+
+var statement1 = "This (is]a st{ateme}nt.[]"
+var statement2 = "This [(is)]a st{ateme}nt.[]"
+console.log(bracesValid(statement1)); 
+console.log(bracesValid(statement2)); 
