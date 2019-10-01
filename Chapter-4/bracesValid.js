@@ -34,6 +34,18 @@ function bracesValid(str){
                 }
                 break;
         }
-
+        if(paren<0|| curly<0|| square<0){
+            //more closing than  opening
+            return  false;
+        }
+    }
+    if(paren!=0  || curly!=0 || square!=0){
+        //more opening than closing
+        return false;
+    }else  if(openingBraces.length>0){
+        //braces not in valid order
+        return  false;
+    }else{
+        return true;
     }
 }
