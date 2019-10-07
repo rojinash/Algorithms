@@ -1,9 +1,9 @@
 function invertHash(associativeArr){
-    var retAssociativeArr={};
+    var retAssociativeArr=new Object();
     for(key in associativeArr){
-        retAssociativeArr[associativeArr[key]] = key;
+        associativeArr[key] = "Hello"
     }
-    return retAssociativeArr;
+    return associativeArr;
 }
 
 var associArr = {"First Name": "Charlie", "Last Name": "Wilson", "Location": "Home", "Number": 1231231234};
