@@ -52,6 +52,57 @@ SLL.prototype.removeFromEnd = function(){
     return this;
 }
 
+SLL.prototype.back = function(){
+    if(this.head==null){
+        return;
+    }
+    var current = this.head;
+    while(current.next){
+        current = current.next;
+    }
+    console.log(current.value);
+}
+
+SLL.prototype.maxToBack = function(){
+    if(this.head==null){
+        return;
+    }
+    var max = this.head;
+    var beforeMax = this.head;
+    var current = this.head;
+    while(current.next!=null){
+        if(max.value < current.next.value){
+            max = current.next;
+            beforeMax = current;
+        }
+        current = current.next;
+    }
+    beforeMax.next = max.next;
+    max.next = null;
+    current.next = max;
+    return this;
+}
+
+SLL.prototype.minToFront = function(){
+    if(this.head==null){
+        return;
+    }
+    var min = this.head;
+    var beforeMin = this.head;
+    var current = this.head;
+    while(current.next!=null){
+        if(min.value > current.next.value){
+            min = current.next;
+            beforeMin = current;
+        }
+        current = current.next;
+    }
+    beforeMin.next = min.next;
+    min.next = this.head;
+    this.head = min;
+    return this;
+}
+
 SLL.prototype.printLst = function(){
     var current = this.head;
     while(current.next!=null){
@@ -69,4 +120,8 @@ myList.printLst();
 myList.removeFromFront();
 myList.printLst();
 myList.removeFromEnd();
+myList.printLst();
+myList.maxToBack();
+myList.printLst();
+myList.minToFront();
 myList.printLst();
