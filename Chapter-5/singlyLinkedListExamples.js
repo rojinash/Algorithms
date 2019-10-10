@@ -103,7 +103,90 @@ SLL.prototype.minToFront = function(){
     return this;
 }
 
+SLL.prototype.removeNode = function(val){
+    if(this.head==null){
+        return;
+    }
+    if(this.head.value == val){
+        this.head = this.head.next;
+        return val;
+    }
+    var prev = this.head;
+    var current = this.head;
+    while(current.next){
+        if(current.value == val){
+            prev.next = current.next
+            return val;
+        }
+        prev = current;
+        current = current.next;
+    }
+    if(current.value==val){
+        prev.next = null;
+        return val;
+    }
+    console.log("No value found");
+}
+
+SLL.prototype.appendAt = function(index, val){
+    var newNode = new SLNode(val);
+    if(index==0){
+        newNode.next=this.head.next;
+        this.head.next=newNode;
+        return this;
+    }
+    var counter = 0;
+    var current = this.head;
+    while(current.next){
+        if(index==counter){
+            newNode.next = current.next;
+            current.next = newNode;
+            return this;
+        }
+        counter++;
+        current = current.next;
+    }
+    if(index==counter){
+        newNode.next=null;
+        current.next=newNode;
+        return this;
+    }
+    console.log("Index out of range!");
+}
+
+SLL.prototype.prependAt = function(index, val){
+    var newNode = new SLNode(val);
+    if(index==0){
+        newNode.next=this.head;
+        this.head=newNode;
+        return this;
+    }
+    var counter = 0;
+    var current = this.head;
+    var previous = current;
+    while(current.next){
+        if(index==counter){
+            previous.next = newNode;
+            newNode.next = current;
+            return this;
+        }
+        counter++;
+        previous = current;
+        current = current.next;
+    }
+    if(index==counter){
+        newNode.next=previous.next;
+        previous.next=newNode;
+        return this;
+    }
+    console.log("Index out of range!");
+}
+
+
 SLL.prototype.printLst = function(){
+    if(!this.head){
+        return "Empty list";
+    }
     var current = this.head;
     while(current.next!=null){
         process.stdout.write(current.value + "->");
@@ -113,6 +196,7 @@ SLL.prototype.printLst = function(){
 }
 
 var myList = new SLL();
+var emptyList = new SLL();
 myList.addToFront(9).addToFront(8).addToFront(7).addToFront(6).addToFront(5);
 myList.printLst();
 myList.addToEnd(1).addToEnd(2).addToEnd(3);
@@ -124,4 +208,8 @@ myList.printLst();
 myList.maxToBack();
 myList.printLst();
 myList.minToFront();
+myList.printLst();
+myList.prependAt(1,"Again");
+myList.printLst();
+console.log(myList.removeNode(7));
 myList.printLst();
