@@ -208,8 +208,6 @@ SLL.prototype.partition = function(val){
         }
         current = current.next;
     }
-    smallList.printLst();
-    bigList.printLst();
     var runner = smallList.head;
     while(runner.next!=null){
         runner = runner.next;
