@@ -195,9 +195,35 @@ SLL.prototype.printLst = function(){
     console.log(current.value);
 }
 
+SLL.prototype.partition = function(val){
+    var bigList = new SLL();
+    var smallList = new SLL();
+
+    var current = this.head;
+    while(current!=null){
+        if(current.value < val){
+            smallList.addToEnd(current.value);
+        }else{
+            bigList.addToEnd(current.value)
+        }
+        current = current.next;
+    }
+    smallList.printLst();
+    bigList.printLst();
+    var runner = smallList.head;
+    while(runner.next!=null){
+        runner = runner.next;
+    }
+    console.log(runner.value);
+    smallList.printLst();
+    runner.next = bigList.head;
+    smallList.printLst();
+    return smallList;
+}
+
 var myList = new SLL();
 var emptyList = new SLL();
-myList.addToFront(9).addToFront(8).addToFront(7).addToFront(6).addToFront(5);
+myList.addToFront(3).addToFront(8).addToFront(1).addToFront(6).addToFront(4);
 myList.printLst();
 myList.addToEnd(1).addToEnd(2).addToEnd(3);
 myList.printLst();
@@ -212,4 +238,5 @@ myList.printLst();
 myList.prependAt(1,"Again");
 myList.printLst();
 console.log(myList.removeNode(7));
+myList = myList.partition(6);
 myList.printLst();
