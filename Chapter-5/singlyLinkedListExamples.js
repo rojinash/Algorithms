@@ -212,10 +212,7 @@ SLL.prototype.partition = function(val){
     while(runner.next!=null){
         runner = runner.next;
     }
-    console.log(runner.value);
-    smallList.printLst();
     runner.next = bigList.head;
-    smallList.printLst();
     return smallList;
 }
 
