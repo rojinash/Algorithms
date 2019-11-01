@@ -12,11 +12,8 @@ function radixSort(arr, radix = 10){
 
     while(length!=0){
         for(i=0; i<arr.length; i++){
-            arrayHolder = Math.floor(arr[i]/(Math.pow(10, placementCounter-1)));
-            placementIndex = arrayHolder % (Math.pow(10, 1));
-            console.log(placementIndex);
-            arrayHolder = Math.floor(arrayHolder/ 10);
-            console.log(arrayHolder);
+            arrayHolder = Math.floor(arr[i]/(Math.pow(radix, placementCounter-1)));
+            placementIndex = arrayHolder % radix;
             buckets[placementIndex].push(arr[i]);
         }
         var counter = 0;
