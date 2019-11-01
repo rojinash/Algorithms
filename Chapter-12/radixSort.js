@@ -4,7 +4,7 @@ function radixSort(arr, radix = 10){
         buckets[i] = [];
     }
     var max = findMax(arr);
-    var length = findLen(max);
+    var length = findLen(max, radix);
 
     var placementIndex = 0;
     var placementCounter = 1;
@@ -41,14 +41,18 @@ function findMax(arr){
     return max;
 }
 
-function findLen(num){
+function findLen(num, base){
     var length = 0;
     while(num != 0){
         length++;
-        num = Math.floor(num/10)
+        num = Math.floor(num/base)
     }
     return length;
 }
 var myArr = [12,1,2222,23,22,45,27,287];
+var binaryArr = [11,100,10,1,10110,1110,11,1001]
+
 console.log(myArr);
 console.log(radixSort(myArr));
+console.log(binaryArr);
+console.log(radixSort(binaryArr, 2));
