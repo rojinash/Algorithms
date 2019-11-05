@@ -21,6 +21,32 @@ function isRotation(str1, str2){
     return false;
 }
 
+function rotationHelper(str1, str2, idx2) {
+    let idx1 = 0;
+  
+    // move them in lock step until unequal
+    for(let index2 = idx2; index2 < str2.length; idx1++, index2++) {
+      if(str1[idx1] !== str2[index2]) return false;
+    }
+  
+    for(let i = 0; i < idx2; idx1++, i++) {
+      if(str1[idx1] !== str2[i]) return false;
+    }
+  
+    return true;
+  }
+  
+  function isRotation2(str1, str2) {
+    const length2 = str2.length;
+    if(str1.length !== length2) return false;
+  
+    for(let i = 0; i < length2; i++) {
+      if(rotationHelper(str1, str2, i)) return true;
+    }
+  
+    return false;
+  }
+
 function isRotationBetter(str1, str2) {
     var tmpStr = "";
     var first = str1[0];
