@@ -9,3 +9,4 @@ function stringDedupe(str){
 }
 
 console.log(stringDedupe("hello world! How is everyone doing?"));
+console.log(stringDedupe("Snaps! crackles! pops!"));
